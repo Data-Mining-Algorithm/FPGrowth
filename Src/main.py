@@ -12,6 +12,5 @@ data = pd.read_excel(file_path)
 transactions = data['items'].apply(lambda x: x.split(","))  # list of lists
 transactions = [list(set([item.strip() for item in transaction])) for transaction in transactions]  # make unique
 frequent_count = round(min_sup * len(transactions))
-
 # print(transactions)
 
