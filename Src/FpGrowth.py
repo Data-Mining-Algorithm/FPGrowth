@@ -6,15 +6,16 @@ Description of the function's purpose.
     Args:
         parameter1: FpTree
         parameter2: min_sup
-        parameter3: min_sup
 
     Returns:
         List of frequent item sets as {itemset, frequency}
     Hint: Use python
 """
 
-def FpGrowth():
+
+def FpGrowth(FpTree, min_sup):
     return
+
 
 """
 Description of the function's purpose.
@@ -24,6 +25,7 @@ Description of the function's purpose.
 
     Just print the list
 """
+
 
 def print_frequent_itemsets(itemset):
     return
