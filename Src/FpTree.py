@@ -22,8 +22,8 @@ def get_path_to_root(node):  # return list of nodes
 class Tree:
 
     def __init__(self, parent=None):
-        self.item_count = {}  # { item, count }
-        self.item_list = []  # vector<Node>
+        self.item_count = {}  # { item, count }, utilized for item_list creation
+        self.item_list = []  # vector<Node>, to iterate over
         self.occurrences = {}  # (item : list of nodes where the item appeared at the tree)
         self.conditional_items = []  # list of conditional items
 
