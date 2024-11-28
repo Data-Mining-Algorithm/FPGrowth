@@ -1,5 +1,4 @@
 import pandas as pd
-import main
 
 
 class Node:
@@ -14,24 +13,30 @@ class Node:
 def get_path_to_root(node):  # return list of nodes
     path = [node]
     while node.parent:
+        print(f"Node: {node.item}, Parent: {node.parent.item}")
         node = node.parent
         path.append(node)
+    print(f"Final path: {[n.item for n in path]}")
     return path
 
 
 class Tree:
 
-    def __init__(self, parent=None):
-        self.item_count = {}  # { item, count }, utilized for item_list creation
-        self.item_list = []  # vector<Node>, to iterate over
-        self.occurrences = {}  # (item : list of nodes where the item appeared at the tree)
-        self.conditional_items = []  # list of conditional items
+    def __init__(self):
+        self.root = Node(item=None)  # initialize the root node (item=None for root)
+        self.item_count = {}  # { item: count }, for counting item frequencies
+        self.item_list = []  # List of items sorted by frequency
+        self.occurrences = {}  # { item: [list of nodes where the item appears] }
+        self.conditional_items = []  # Conditional items for conditional FP-trees
 
     def insert(self, transaction, frequent_count):
-        cur = self
-        transaction.sort(key=lambda x: -cur.items_count[x])
+        cur = self.root  # Start at the root node
 
-        while self.item_count[transaction[len(transaction) - 1]] < frequent_count:
+        # Sort transaction items by frequency (descending)
+        transaction.sort(key=lambda x: -self.item_count[x])
+
+        # Remove items that don't meet the frequent_count threshold
+        while transaction and self.item_count[transaction[-1]] < frequent_count:
             transaction.pop()
 
         for item in transaction:
@@ -39,12 +44,11 @@ class Tree:
                 self.occurrences[item] = []
 
             if item not in cur.children:
-                cur.children[item] = Tree(cur)
+                cur.children[item] = Node(item, parent=cur)  # Add a new node for the item
                 self.occurrences[item].append(cur.children[item])
 
             cur = cur.children[item]
-            cur.visits_count += 1
-
+            cur.count += 1  # Increment the count for the node
 
 def build_tree(transactions, frequent_count, old_conditional_items=None, new_condition_item=None):
     if old_conditional_items is None:
@@ -57,9 +61,10 @@ def build_tree(transactions, frequent_count, old_conditional_items=None, new_con
             tree.item_count[item] = tree.item_count.get(item, 0) + 1
 
     # items with higher frequent count are first # to help in building the sub-trees
+    tree.item_list = list(tree.item_count.keys())
     tree.item_list.sort(key=lambda x: -tree.item_count[x])
 
-    while tree.item_count[tree.item_list[len(tree.item_list) - 1]] < frequent_count:
+    while tree.item_list and tree.item_count[tree.item_list[len(tree.item_list) - 1]] < frequent_count:
         tree.item_list.pop()
 
     for transaction in transactions:

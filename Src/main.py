@@ -2,8 +2,8 @@ import pandas as pd
 from FpTree import build_tree
 from FpGrowth import FpGrowth
 
-min_sup = 0.2
-min_conf = 0.5
+min_sup = 0.6
+min_conf = 0.8
 # items_count = {}  # (item : frequent_count)
 # items_list = []  # array of items
 # occurrences = {}  # (item : list of nodes where the item appeared at the main trie)

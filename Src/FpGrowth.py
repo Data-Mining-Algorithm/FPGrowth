@@ -12,16 +12,17 @@ Description of the function's purpose.
     Hint: Use python
 """
 
-from FpTree import get_path_to_root
+from FpTree import build_tree,get_path_to_root,Node,Tree
 
-def FpGrowth(FpTree, min_sup):
-    if not FpTree.item_list: # if nothing is inside the tree's item list then exit
+def FpGrowth(tree: Tree, min_sup):
+
+    if not tree.item_list: # if nothing is inside the tree's item list then exit
         return []
-    
+
     frequent_itemsets = []
 
-    for item in FpTree.item_list: 
-        nodes = FpTree.occurrences.get(item, []) # get the list of nodes where the current items appears in the tree
+    for item in tree.item_list: 
+        nodes = tree.occurrences.get(item, []) # get the list of nodes where the current items appears in the tree
         
         support = 0
         for node in nodes:
@@ -36,10 +37,19 @@ def FpGrowth(FpTree, min_sup):
 
         for node in nodes:
             path_to_root = get_path_to_root(node)
-            path_to_root = [n.item for n in reversed(path_to_root[:-1])] # reverse the path + remove the current item from it
+            path_to_root = [n.item for n in reversed(path_to_root[:-1])]
             conditional_transactions.append(path_to_root)
 
-            #TBD  
+        print(f"Conditional Transactions for {item}: {conditional_transactions}")
+
+        conditional_tree = build_tree(conditional_transactions, min_sup)
+
+        print(f"Conditional Tree for {item}: {conditional_tree.item_list}")
+
+        conditional_frequent_itemsets = FpGrowth(conditional_tree, min_sup)
+
+        for itemset, count in conditional_frequent_itemsets:
+            frequent_itemsets.append(([item] + itemset, count))
 
     return frequent_itemsets
 
