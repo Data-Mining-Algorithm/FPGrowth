@@ -13,10 +13,10 @@ class Node:
 def get_path_to_root(node):  # return list of nodes
     path = [node]
     while node.parent:
-        print(f"Node: {node.item}, Parent: {node.parent.item}")
+        #print(f"Node: {node.item}, Parent: {node.parent.item}")
         node = node.parent
         path.append(node)
-    print(f"Final path: {[n.item for n in path]}")
+    #print(f"Final path: {[n.item for n in path]}")
     return path
 
 

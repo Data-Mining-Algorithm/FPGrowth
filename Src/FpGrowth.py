@@ -58,5 +58,5 @@ Description of the function's purpose.
 
 
 def print_frequent_itemsets(itemsets):
-    for itemset, count in itemsets:
-        print(f"Itemset: {itemset}, Count: {count}")
+    for itemset, support in itemsets.items():
+        print(f" itemset: {itemset}, support: {support}")
