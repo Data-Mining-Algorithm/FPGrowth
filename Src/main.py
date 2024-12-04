@@ -6,14 +6,14 @@ from Src.association_rules import calculate_association_rules, print_strong_rule
 
 # from association_rules import calculate_association_rules
 
-#min_sup = 0.0001
-min_conf = 0.01
+min_sup = 0.9
+min_conf = 1
 
-file_path = "D:/Curriculum/Semester 5/Data Mining/Fpgrowth_Project/transactions.xlsx"  # replace with complete file path
+file_path = "D:/Curriculum/Semester 5/Data Mining/Fpgrowth_Project/Horizontal_Format.xlsx"  # replace with complete file path
 data = pd.read_excel(file_path)
 transactions = data['items'].apply(lambda x: x.split(","))  # list of lists
 transactions = [list(set([item.strip() for item in transaction])) for transaction in transactions]  # make unique
-frequent_count = 3 #round(min_sup * len(transactions))
+frequent_count = 1 #round(min_sup * len(transactions))
 print(transactions)
 # print(transactions)
 print("fq:", frequent_count)

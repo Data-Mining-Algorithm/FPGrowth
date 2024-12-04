@@ -1,9 +1,47 @@
+import itertools
+
+
 def calculate_confidence_helper(tot_supp, h1, h2, frequent_itemsets):
+    h1.sort()
+    perm_h1 = itertools.permutations(h1)
+
+    while True:
+        try:
+            kh1 = tuple(next(perm_h1))
+            if kh1 in frequent_itemsets:
+                h1 = kh1
+                break
+        except StopIteration:
+            raise KeyError(f"No valid permutation found for h1: {h1}")
+
     return tot_supp / frequent_itemsets[tuple(h1)]
 
 
 def calculate_lift_helper(tot_supp, h1, h2, frequent_itemsets, n):
     nom = tot_supp / n
+    h1.sort()
+    h2.sort()
+    perm_h1 = itertools.permutations(h1)
+    perm_h2 = itertools.permutations(h2)
+
+    while True:
+        try:
+            kh1 = tuple(next(perm_h1))
+            if kh1 in frequent_itemsets:
+                h1 = kh1
+                break
+        except StopIteration:
+            raise KeyError(f"No valid permutation found for h1: {h1}")
+
+    while True:
+        try:
+            kh2 = tuple(next(perm_h2))
+            if kh2 in frequent_itemsets:
+                h2 = kh2
+                break
+        except StopIteration:
+            raise KeyError(f"No valid permutation found for h1: {h2}")
+
     den = (frequent_itemsets[tuple(h1)] / n) * (frequent_itemsets[tuple(h2)] / n)
     return nom / den
 

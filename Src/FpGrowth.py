@@ -24,7 +24,7 @@ def FpGrowth(tree, min_sup, call_num=0):
     if not hasattr(tree, 'item_list') or not hasattr(tree, 'occurrences'):
         raise ValueError("Input tree must have 'item_list' and 'occurrences' att    ributes")
     if not isinstance(min_sup, (int, float)) or min_sup <= 0:
-        raise ValueError("min_sup must be a positive number")
+        raise ValueError("min_sup must be a positive number", min_sup)
 
     frequent_itemsets = {}
     if len(tree.conditional_items) > 0:
