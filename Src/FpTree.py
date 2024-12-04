@@ -64,14 +64,14 @@ class Tree:
             cur = cur.children[item]
             cur.count += 1  # Increment the count for the node
 
-    def display(self, cur=None, indent=0):
+    def dfs(self, cur=None, indent=0):
         if cur is None:
             cur = self.root
 
         if cur is not None and cur.item is not None:
             print("    " * indent, cur.item, cur.count)
         for ch, ch_node in cur.children.items():
-            self.display(ch_node, indent + 1)
+            self.dfs(ch_node, indent + 1)
 
 
 def build_tree(transactions, frequent_count, old_cond_supp=10, old_conditional_items=None, new_condition_item=None,

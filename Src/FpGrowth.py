@@ -34,8 +34,8 @@ def FpGrowth(tree, min_sup, call_num=0):
     # print_frequent_itemsets(frequent_itemsets)
     # print("\n\n\n\n\n\n")
 
-    tree.item_list.sort(key=lambda x: tree.item_count[x])
-    tree.item_list = list(set(tree.item_list))
+    #tree.item_list.sort(key=lambda x: tree.item_count[x])
+    #tree.item_list = list(set(tree.item_list))
     # for item in tree.item_list:
     #    print("item, count",item, tree.item_count[item])
     tl = tree.item_list
@@ -73,7 +73,7 @@ def FpGrowth(tree, min_sup, call_num=0):
         cl = tree.conditional_items.copy()
         cl.append(item)
         print("conditional tree of ", cl)
-        conditional_tree.display()
+        conditional_tree.dfs()
         print("-------------------------------------")
         frequent_itemsets.update(FpGrowth(conditional_tree, min_sup, call_num + 1))
 
