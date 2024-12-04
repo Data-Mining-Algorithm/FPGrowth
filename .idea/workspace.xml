@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08d425bc-8bfb-4db4-92dc-1c3ac17a414e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/FpGrowth.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/FpGrowth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/FpTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/FpTree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/association_rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/association_rules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Src/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -29,7 +36,9 @@
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "aly__branch"
+    "git-widget-placeholder": "aly__branch",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/mb261/PycharmProjects/pythonProject2"
   }
 }]]></component>
   <component name="RunManager">
@@ -64,7 +73,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+        <option value="bundled-python-sdk-c69650fc56ca-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15619.17" />
       </set>
     </attachedChunks>
   </component>
@@ -78,5 +87,16 @@
       <updated>1732094813309</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
